@@ -5,28 +5,10 @@
     <title>Manual-player instantiation example</title>
 
     <script src="../../dist/dash.debug.js"></script>
+    <script src="../../src/streaming/protection/servers/Widevine.js"></script>
+    <script src="main.js"></script>
     <!--dash.all.js should be used in production over dash.debug.js. dash.debug.js is not compressed or obfuscated and the file size is much larger compared with dash.all.js-->
     <!--<script src="../../dist/dash.all.js"></script>-->
-
-    <script>
-		"use strict";
-        function init(streamUrl, token) {
-            var video,context,player;
-            video = document.querySelector("video");
-            context = new Dash.di.DashContext();
-            player = new MediaPlayer(context);
-            player.startup();
-            player.attachView(video);
-            player.setAutoPlay(true);
-            player.attachSource(streamUrl);
-        }
-		
-		function updateSource(){
-			let streamUrl = document.getElementById("stream-url").value;
-			let token = document.getElementById("token").value;
-			init(streamUrl, token);
-		}
-    </script>
 
     <style>
         video {
@@ -48,7 +30,7 @@
 		<div id="param">
 			<div class="field">
 				<label for="stream-url">Stream url</label>
-				<input type="text" id="stream-url" value="http://dash.edgesuite.net/envivio/Envivio-dash2/manifest.mpd"></input>
+				<input type="text" id="stream-url" ></input>
 			</div>
 			<div class="field">
 				<label for="token">Token</label>
