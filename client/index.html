@@ -3,30 +3,13 @@
 <head>
     <meta charset="utf-8"/>
     <title>Manual-player instantiation example</title>
-
+	<link rel="stylesheet" type="text/css" href="style.css">
     <script src="../../dist/dash.debug.js"></script>
     <script src="../../src/streaming/protection/servers/Widevine.js"></script>
     <script src="main.js"></script>
-    <!--dash.all.js should be used in production over dash.debug.js. dash.debug.js is not compressed or obfuscated and the file size is much larger compared with dash.all.js-->
-    <!--<script src="../../dist/dash.all.js"></script>-->
-
-    <style>
-        video {
-            width: 640px;
-            height: 360px;
-        }
-		#param {
-			margin: 20px;
-		}
-		#param input {
-			width: 500px;
-			display: block;
-		}
-		#param .field {
-			margin: 10px 0;
-		}
-    </style>
+	
     <body>
+		<h1>DASH Widevine DRMtoday Player</h1>
 		<div id="param">
 			<div class="field">
 				<label for="stream-url">Stream url</label>
@@ -36,11 +19,16 @@
 				<label for="token">Token</label>
 				<input type="text" id="token"></input>
 			</div>
-			<button onclick="updateSource()">Play !</button>
+			<button class="btnGreen" onclick="updateSource()">Play !</button>
+			<button  class="btnGrey" onclick="init()">Reset</button>
 		</div>
         <div>
             <video controls="true">
             </video>
         </div>
+		<div class="field">
+			<p>Bonus :</p>
+			<button class="btnGrey" onclick="noSubExample()">Exemple avec sous-titres (no token)</button>
+		</div>
     </body>
 </html>

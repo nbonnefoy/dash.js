@@ -2,6 +2,14 @@
 
 var data;
 
+function init(){
+	loadJSON(function(d){
+		data = JSON.parse(d);
+		document.getElementById("stream-url").value = data.url;
+		document.getElementById("token").value = data.protData["com.widevine.alpha"].httpRequestHeaders["dt-custom-data"];
+	});
+}
+
 function loadJSON(callback) {
 	var xobj = new XMLHttpRequest();
 		xobj.overrideMimeType("application/json");
@@ -32,12 +40,12 @@ function updateSource(){
 	playVideo(data);
 }
 
-function init(){
-	loadJSON(function(d){
-		data = JSON.parse(d);
-		document.getElementById("stream-url").value = data.url;
-		document.getElementById("token").value = data.protData["com.widevine.alpha"].httpRequestHeaders["dt-custom-data"];
-	});
+function noSubExample(){
+	document.getElementById("stream-url").value = "http://dash.edgesuite.net/dash264/TestCases/4b/qualcomm/1/ED_OnDemand_5SecSeg_Subtitles.mpd";
+	document.getElementById("token").value = "";
+	updateSource();
 }
+
+
 
 document.addEventListener('DOMContentLoaded', init);
